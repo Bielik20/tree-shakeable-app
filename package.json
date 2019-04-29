@@ -16,7 +16,7 @@
 	"author": "Damian Bielecki <bielik20@gmail.com>",
 	"license": "ISC",
 	"dependencies": {
-		"tree-shakeable-lib": "file:../typescript-library-starter"
+		"tree-shakeable-lib": "file:../tree-shakeable-lib"
 	},
 	"devDependencies": {
 		"@types/chai": "^4.1.7",
