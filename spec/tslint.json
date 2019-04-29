@@ -1,0 +1,12 @@
+{
+	"extends": "../tslint.json",
+	"rules": {
+		"no-implicit-dependencies": [true, "dev", ["@app"]],
+		"no-unused-expression": false,
+		"no-submodule-imports": false,
+		"max-line-length": [
+			true,
+			{ "limit": 100, "ignore-pattern": "^import |^export {(.*?)} |http |it" }
+		]
+	}
+}
