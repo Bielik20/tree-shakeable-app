@@ -1,10 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
-const { version } = require('./package');
 
 const ROOT = path.resolve(__dirname, 'src');
-const DESTINATION = path.resolve(__dirname, `dist/${version}`);
+const DESTINATION = path.resolve(__dirname, `dist`);
 
 module.exports = (env) => {
 	return {
