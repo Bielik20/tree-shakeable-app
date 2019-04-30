@@ -10,12 +10,10 @@ module.exports = (env) => {
 		mode: 'development',
 		context: ROOT,
 
-		entry: {
-			main: './index.ts',
-		},
+		entry: ['@babel/polyfill/noConflict', './index.ts'],
 
 		output: {
-			filename: '[name].bundle.js',
+			filename: 'main.bundle.js',
 			path: DESTINATION,
 		},
 
@@ -51,6 +49,28 @@ module.exports = (env) => {
 					loader: 'awesome-typescript-loader',
 					options: {
 						configFileName: `tsconfig.${env}.json`,
+					},
+				},
+				{
+					test: /\.(js|ts)$/,
+					exclude: [/node_modules/],
+					loader: 'babel-loader',
+					options: {
+						presets: [
+							[
+								'@babel/preset-env',
+								{
+									modules: false,
+									targets: {
+										browsers: ['last 2 versions', 'safari >= 9.0', 'ie 11', '> 2%'],
+									},
+									exclude: [
+										'@babel/plugin-transform-regenerator',
+										'@babel/transform-async-to-generator',
+									],
+								},
+							],
+						],
 					},
 				},
 			],
