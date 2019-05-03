@@ -17,6 +17,7 @@
 	"author": "Damian Bielecki <bielik20@gmail.com>",
 	"license": "ISC",
 	"dependencies": {
+		"@wikia/ad-engine": "github:Wikia/ad-engine#ADEN-8692",
 		"tree-shakeable-lib": "file:../tree-shakeable-lib"
 	},
 	"devDependencies": {
