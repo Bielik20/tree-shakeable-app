@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const ROOT = path.resolve(__dirname, 'src');
 const DESTINATION = path.resolve(__dirname, `dist`);
@@ -22,7 +23,7 @@ module.exports = (env) => {
 		resolve: {
 			extensions: ['.ts', '.js'],
 			modules: [ROOT, 'node_modules'],
-			plugins: [new TsConfigPathsPlugin({ configFileName: `tsconfig.${env}.json` })],
+			plugins: [new TsConfigPathsPlugin({ configFileName: `tsconfig.${env.TARGET}.json` })],
 		},
 
 		module: {
@@ -50,11 +51,13 @@ module.exports = (env) => {
 					exclude: [/node_modules/],
 					loader: 'awesome-typescript-loader',
 					options: {
-						configFileName: `tsconfig.${env}.json`,
+						configFileName: `tsconfig.${env.TARGET}.json`,
 					},
 				},
 			],
 		},
+
+		plugins: [new BundleAnalyzerPlugin({ analyzerMode: env.ANALYZE ? 'server' : 'disabled' })],
 
 		devtool: 'cheap-module-source-map',
 		devServer: {},

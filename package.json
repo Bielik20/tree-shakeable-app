@@ -4,9 +4,10 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "webpack-dev-server --port 9000 --inline --progress --profile --colors --watch --content-base src/ --mode development --env=app",
-		"build": "webpack --config webpack.config.js --mode production --env=app",
-		"build:test": "webpack -p",
+		"dev": "webpack-dev-server --port 9000 --inline --progress --profile --colors --watch --content-base src/ --mode development --env.TARGET",
+		"build": "webpack --mode production --env.TARGET=app",
+		"watch": "npm run build -- -w",
+		"stats": "webpack --env.TARGET=app --env.ANALYZE",
 		"test": "mocha-webpack --full-trace './spec/**/*.spec.ts' -r jsdom-global/register --webpack-env=spec",
 		"lint": "tslint --project .",
 		"lintf": "tslint --project . --fix",
@@ -43,6 +44,7 @@
 		"tslint-loader": "3.6.0",
 		"typescript": "^3.4.3",
 		"webpack": "4.12.0",
+		"webpack-bundle-analyzer": "^3.3.2",
 		"webpack-cli": "3.0.8",
 		"webpack-dev-server": "3.1.4"
 	},
