@@ -6,6 +6,5 @@
 			"@app/*": ["src/*"]
 		}
 	},
-	"exclude": ["src/**/*"],
 	"include": ["spec/**/*"]
 }
