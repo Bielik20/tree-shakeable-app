@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const ROOT = path.resolve(__dirname, 'src');
@@ -56,8 +55,6 @@ module.exports = (env, argv) => {
 				},
 			],
 		},
-
-		plugins: [new BundleAnalyzerPlugin({ analyzerMode: env.ANALYZE ? 'server' : 'disabled' })],
 
 		devtool: argv.mode === 'production' ? 'source-map' : 'cheap-module-source-map',
 	};
