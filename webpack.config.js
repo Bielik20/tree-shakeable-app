@@ -1,12 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
-const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const ROOT = path.resolve(__dirname, 'src');
 const DESTINATION = path.resolve(__dirname, `dist`);
 
-module.exports = (env) => {
+module.exports = (env, argv) => {
 	return {
 		mode: 'development',
 		context: ROOT,
@@ -23,7 +23,7 @@ module.exports = (env) => {
 		resolve: {
 			extensions: ['.ts', '.js'],
 			modules: [ROOT, 'node_modules'],
-			plugins: [new TsConfigPathsPlugin({ configFileName: `tsconfig.${env.TARGET}.json` })],
+			plugins: [new TsconfigPathsPlugin({ configFile: `tsconfig.${env.TARGET}.json` })],
 		},
 
 		module: {
@@ -49,9 +49,9 @@ module.exports = (env) => {
 				{
 					test: /\.ts$/,
 					exclude: [/node_modules/],
-					loader: 'awesome-typescript-loader',
+					loader: 'ts-loader',
 					options: {
-						configFileName: `tsconfig.${env.TARGET}.json`,
+						configFile: `tsconfig.${env.TARGET}.json`,
 					},
 				},
 			],
@@ -59,7 +59,6 @@ module.exports = (env) => {
 
 		plugins: [new BundleAnalyzerPlugin({ analyzerMode: env.ANALYZE ? 'server' : 'disabled' })],
 
-		devtool: 'cheap-module-source-map',
-		devServer: {},
+		devtool: argv.mode === 'production' ? 'source-map' : 'cheap-module-source-map',
 	};
 };
