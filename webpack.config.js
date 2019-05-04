@@ -50,13 +50,26 @@ module.exports = (env, argv) => {
 					exclude: [/node_modules/],
 					use: [
 						{
-							loader: 'ts-loader',
+							loader: 'awesome-typescript-loader',
 							options: {
 								configFile: `tsconfig.${env.TARGET}.json`,
+								useBabel: true,
+								babelCore: '@babel/core',
+								babelOptions: {
+									babelrc: false /* Important line */,
+									presets: [
+										[
+											'@babel/preset-env',
+											{
+												targets: {
+													browsers: ['last 2 versions', 'safari >= 9.0', 'ie 11', '> 2%'],
+												},
+												modules: false,
+											},
+										],
+									],
+								},
 							},
-						},
-						{
-							loader: 'babel-loader',
 						},
 					],
 				},
@@ -74,6 +87,7 @@ module.exports = (env, argv) => {
 											targets: {
 												browsers: ['last 2 versions', 'safari >= 9.0', 'ie 11', '> 2%'],
 											},
+											modules: false,
 										},
 									],
 								],
