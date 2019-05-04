@@ -48,10 +48,38 @@ module.exports = (env, argv) => {
 				{
 					test: /\.ts$/,
 					exclude: [/node_modules/],
-					loader: 'ts-loader',
-					options: {
-						configFile: `tsconfig.${env.TARGET}.json`,
-					},
+					use: [
+						{
+							loader: 'ts-loader',
+							options: {
+								configFile: `tsconfig.${env.TARGET}.json`,
+							},
+						},
+						{
+							loader: 'babel-loader',
+						},
+					],
+				},
+				{
+					test: /\.js$/,
+					exclude: /node_modules\/(?![tree-shakeable-lib])/,
+					use: [
+						{
+							loader: 'babel-loader',
+							options: {
+								presets: [
+									[
+										'@babel/preset-env',
+										{
+											targets: {
+												browsers: ['last 2 versions', 'safari >= 9.0', 'ie 11', '> 2%'],
+											},
+										},
+									],
+								],
+							},
+						},
+					],
 				},
 			],
 		},
