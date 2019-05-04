@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const babelConfig = require('./babel-config');
 
 const ROOT = path.resolve(__dirname, 'src');
 const DESTINATION = path.resolve(__dirname, `dist`);
@@ -57,17 +58,7 @@ module.exports = (env, argv) => {
 								babelCore: '@babel/core',
 								babelOptions: {
 									babelrc: false /* Important line */,
-									presets: [
-										[
-											'@babel/preset-env',
-											{
-												targets: {
-													browsers: ['last 2 versions', 'safari >= 9.0', 'ie 11', '> 2%'],
-												},
-												modules: false,
-											},
-										],
-									],
+									...babelConfig,
 								},
 							},
 						},
@@ -80,17 +71,8 @@ module.exports = (env, argv) => {
 						{
 							loader: 'babel-loader',
 							options: {
-								presets: [
-									[
-										'@babel/preset-env',
-										{
-											targets: {
-												browsers: ['last 2 versions', 'safari >= 9.0', 'ie 11', '> 2%'],
-											},
-											modules: false,
-										},
-									],
-								],
+								...babelConfig,
+								plugins: [],
 							},
 						},
 					],
