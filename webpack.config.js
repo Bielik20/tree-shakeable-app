@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 const babelConfig = require('./babel-config');
 
 const ROOT = path.resolve(__dirname, 'src');
@@ -23,7 +23,7 @@ module.exports = (env, argv) => {
 		resolve: {
 			extensions: ['.ts', '.js'],
 			modules: [ROOT, 'node_modules'],
-			plugins: [new TsconfigPathsPlugin({ configFile: `tsconfig.${env.TARGET}.json` })],
+			plugins: [new TsConfigPathsPlugin({ configFileName: `tsconfig.${env.TARGET}.json` })],
 		},
 
 		module: {
@@ -53,7 +53,7 @@ module.exports = (env, argv) => {
 						{
 							loader: 'awesome-typescript-loader',
 							options: {
-								configFile: `tsconfig.${env.TARGET}.json`,
+								configFileName: `tsconfig.${env.TARGET}.json`,
 								useBabel: true,
 								babelCore: '@babel/core',
 								babelOptions: {
