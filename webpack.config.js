@@ -1,7 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
-const babelConfig = require('./babel-config');
+const {
+	getPreLoaders,
+	getTypeScriptLoader,
+	getLibLoader,
+} = require('tree-shakeable-lib/tools/webpack-app.config');
 
 const ROOT = path.resolve(__dirname, 'src');
 const DESTINATION = path.resolve(__dirname, `dist`);
@@ -11,12 +15,10 @@ module.exports = (env, argv) => {
 		mode: 'development',
 		context: ROOT,
 
-		entry: {
-			main: './index.ts',
-		},
+		entry: './index.ts',
 
 		output: {
-			filename: '[name].bundle.js',
+			filename: 'index.js',
 			path: DESTINATION,
 		},
 
@@ -28,55 +30,9 @@ module.exports = (env, argv) => {
 
 		module: {
 			rules: [
-				/****************
-				 * PRE-LOADERS
-				 *****************/
-				{
-					enforce: 'pre',
-					test: /\.js$/,
-					use: 'source-map-loader',
-				},
-				{
-					enforce: 'pre',
-					test: /\.ts$/,
-					exclude: /node_modules/,
-					use: 'tslint-loader',
-				},
-
-				/****************
-				 * LOADERS
-				 *****************/
-				{
-					test: /\.ts$/,
-					exclude: [/node_modules/],
-					use: [
-						{
-							loader: 'awesome-typescript-loader',
-							options: {
-								configFileName: `tsconfig.${env.TARGET}.json`,
-								useBabel: true,
-								babelCore: '@babel/core',
-								babelOptions: {
-									babelrc: false /* Important line */,
-									...babelConfig,
-								},
-							},
-						},
-					],
-				},
-				{
-					test: /\.js$/,
-					exclude: [/node_modules/],
-					use: [
-						{
-							loader: 'babel-loader',
-							options: {
-								...babelConfig,
-								plugins: [],
-							},
-						},
-					],
-				},
+				...getPreLoaders(),
+				getTypeScriptLoader(ROOT, `tsconfig.${env.TARGET}.json`),
+				getLibLoader(),
 			],
 		},
 

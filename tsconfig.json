@@ -1,15 +1,8 @@
 {
+	"extends": "./node_modules/tree-shakeable-lib/tools/tsconfig.base.json",
 	"compilerOptions": {
-		"outDir": "./dist/",
+		"outDir": "dist",
 		"sourceMap": true,
-		"noImplicitAny": false,
-		"allowJs": true,
-		"moduleResolution": "node",
-		"module": "es2015",
-		"target": "es5",
-		"baseUrl": ".",
-		"lib": ["es2015", "dom", "scripthost"],
-		"typeRoots": ["node_modules/@types", "@types"]
-	},
-	"exclude": ["node_modules", "@types"]
+		"baseUrl": "."
+	}
 }
