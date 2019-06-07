@@ -1,6 +1,7 @@
-import { first, ProductsClass } from 'tree-shakeable-lib';
+import { dummy, first, products, ProductsClass, third } from 'tree-shakeable-lib';
 
-first();
+third();
+// console.log(dummy);
 // products();
 //
 // class DerivedClass extends ProductsClass {
