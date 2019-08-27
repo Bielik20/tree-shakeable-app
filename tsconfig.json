@@ -3,6 +3,8 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"sourceMap": true,
-		"baseUrl": "."
+		"baseUrl": ".",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true
 	}
 }

@@ -1,12 +1,13 @@
-import { dummy, first, products, ProductsClass, third } from 'tree-shakeable-lib';
+import { LibConsumerClass, LibDependencyClass } from 'tree-shakeable-lib';
+import { Container, Scope } from 'typescript-ioc';
+import { AppDependencyClass } from './core';
+import { AppConsumerClass } from './products';
 
-third();
-// console.log(dummy);
-// products();
-//
-// class DerivedClass extends ProductsClass {
-// 	print() {
-// 		// tslint:disable-next-line:no-console
-// 		console.log('from derived class ', this.surname);
-// 	}
-// }
+// Container.bind(LibConsumerClass).to(AppConsumerClass);
+Container.bind(AppDependencyClass).scope(Scope.Local);
+Container.bind(LibDependencyClass).to(AppDependencyClass);
+
+const instance: LibConsumerClass = Container.get(LibConsumerClass);
+const dep: LibDependencyClass = Container.get(LibDependencyClass);
+
+instance.printName();
