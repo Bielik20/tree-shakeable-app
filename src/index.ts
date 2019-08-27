@@ -1,12 +1,11 @@
-import { dummy, first, products, ProductsClass, third } from 'tree-shakeable-lib';
+import { testBindTo } from './tests/bind-to';
+import { testDefault } from './tests/default';
+import { testManualConstructor } from './tests/manual-constructor';
+import { testScope } from './tests/scope';
+import { testTreeShaking } from './tests/tree-shaking';
 
-third();
-// console.log(dummy);
-// products();
-//
-// class DerivedClass extends ProductsClass {
-// 	print() {
-// 		// tslint:disable-next-line:no-console
-// 		console.log('from derived class ', this.surname);
-// 	}
-// }
+// testDefault();
+// testBindTo();
+// testManualConstructor();
+testScope();
+// testTreeShaking();
