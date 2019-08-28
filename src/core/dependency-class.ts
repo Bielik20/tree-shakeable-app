@@ -1,4 +1,4 @@
-import { Container } from 'tree-shakeable-lib';
+import { container } from 'tree-shakeable-lib';
 
 export class AppDependencyOfDependencyClass {
 	field: 'dep of dep';
@@ -9,7 +9,7 @@ export class AppDependencyOfDependencyClass {
 }
 
 export class AppDependencyClass {
-	private aaa = Container.get(AppDependencyOfDependencyClass);
+	private aaa = container.get(AppDependencyOfDependencyClass);
 	name = 'bielik name 2';
 	surname = 'bielik surname 2';
 

@@ -1,14 +1,14 @@
-import { LibConsumerClass, LibDependencyClass, Container, LibUnusedClass , Scope} from 'tree-shakeable-lib';
+import { LibConsumerClass, LibDependencyClass, container, LibUnusedClass , Scope} from 'tree-shakeable-lib';
 import { AppDependencyClass } from './core';
 import { AppConsumerClass } from './products';
 
-Container.bind(LibConsumerClass).to(AppConsumerClass);
+container.bind(LibConsumerClass).to(AppConsumerClass);
 // Container.bind(AppDependencyClass).scope(Scope.Transient);
-Container.bind(LibDependencyClass).to(AppDependencyClass);
+container.bind(LibDependencyClass).to(AppDependencyClass);
 
-const instance = Container.get(LibConsumerClass);
+const instance = container.get(LibConsumerClass);
 // Container.get(LibUnusedClass);
 
 instance.printName();
 
-Container.get(LibDependencyClass);
+container.get(LibDependencyClass);

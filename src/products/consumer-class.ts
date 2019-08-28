@@ -1,15 +1,15 @@
-import { LibDependencyClass, Container } from 'tree-shakeable-lib';
+import { LibDependencyClass, container } from 'tree-shakeable-lib';
 
 export class BaseConsumerClass {
 	constructor(public ownDep: LibDependencyClass) {}
 }
 
 export class AppConsumerClass extends BaseConsumerClass {
-	private date = Container.get(Date);
-	private dependency = Container.get(LibDependencyClass);
+	private date = container.get(Date);
+	private dependency = container.get(LibDependencyClass);
 
 	constructor() {
-		super(Container.get(LibDependencyClass));
+		super(container.get(LibDependencyClass));
 		console.log('constructor AppConsumerClass');
 	}
 
