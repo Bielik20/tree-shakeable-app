@@ -1,4 +1,4 @@
-import { Inject } from 'typescript-ioc';
+import { Container } from 'tree-shakeable-lib';
 
 export class AppDependencyOfDependencyClass {
 	field: 'dep of dep';
@@ -9,12 +9,11 @@ export class AppDependencyOfDependencyClass {
 }
 
 export class AppDependencyClass {
-	@Inject date111: Date;
+	private aaa = Container.get(AppDependencyOfDependencyClass);
 	name = 'bielik name 2';
 	surname = 'bielik surname 2';
 
-	constructor(@Inject private aaa: AppDependencyOfDependencyClass) {
+	constructor() {
 		console.log('constructor AppDependencyClass');
 	}
-	// constructor(@Inject date2: Date) {}
 }

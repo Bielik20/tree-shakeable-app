@@ -18,8 +18,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"@babel/runtime-corejs2": "^7.4.4",
-		"tree-shakeable-lib": "git+https://github.com/Bielik20/tree-shakeable-lib.git",
-		"typescript-ioc": "git+https://github.com/Bielik20/typescript-ioc.git#di-test"
+		"tree-shakeable-lib": "git+https://github.com/Bielik20/tree-shakeable-lib.git"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.0.0",

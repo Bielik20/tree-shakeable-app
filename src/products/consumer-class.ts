@@ -1,13 +1,15 @@
-import { LibDependencyClass } from 'tree-shakeable-lib';
-import { Inject } from 'typescript-ioc';
+import { LibDependencyClass, Container } from 'tree-shakeable-lib';
 
 export class BaseConsumerClass {
 	constructor(public ownDep: LibDependencyClass) {}
 }
 
 export class AppConsumerClass extends BaseConsumerClass {
-	constructor(@Inject private dependency: LibDependencyClass, @Inject private date: Date) {
-		super(dependency);
+	private date = Container.get(Date);
+	private dependency = Container.get(LibDependencyClass);
+
+	constructor() {
+		super(Container.get(LibDependencyClass));
 		console.log('constructor AppConsumerClass');
 	}
 
