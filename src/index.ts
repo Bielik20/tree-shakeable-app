@@ -8,7 +8,7 @@ Container.bind(LibConsumerClass).to(AppConsumerClass);
 Container.bind(AppDependencyOfDependencyClass);
 Container.bind(LibDependencyClass).to(AppDependencyClass);
 
-const instance: LibConsumerClass = Container.get(LibConsumerClass);
-const dep: LibDependencyClass = Container.get(LibDependencyClass);
+const instance = Container.get(LibConsumerClass);
+const dep = Container.get(LibDependencyClass);
 
 instance.printName();
