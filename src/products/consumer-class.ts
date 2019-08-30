@@ -1,4 +1,4 @@
-import { LibDependencyClass, container } from 'tree-shakeable-lib';
+import { container, LibDependencyClass } from 'tree-shakeable-lib';
 
 export class BaseConsumerClass {
 	constructor(public ownDep: LibDependencyClass) {}

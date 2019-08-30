@@ -1,14 +1,9 @@
-import { LibConsumerClass, LibDependencyClass, container, LibUnusedClass , Scope} from 'tree-shakeable-lib';
-import { AppDependencyClass } from './core';
-import { AppConsumerClass } from './products';
+import { testBindTo } from './tests/bind-to';
+import { testManualConstructor } from './tests/manual-constructor';
+import { testScope } from './tests/scope';
+import { testTreeShaking } from './tests/tree-shaking';
 
-container.bind(LibConsumerClass).to(AppConsumerClass);
-// Container.bind(AppDependencyClass).scope(Scope.Transient);
-container.bind(LibDependencyClass).to(AppDependencyClass);
-
-const instance = container.get(LibConsumerClass);
-// Container.get(LibUnusedClass);
-
-instance.printName();
-
-container.get(LibDependencyClass);
+testBindTo();
+// testManualConstructor();
+// testScope();
+// testTreeShaking();
