@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "webpack-dev-server --port 9000 --inline --progress --profile --colors --watch --content-base src/ --mode development --env.TARGET=app",
+		"dev": "webpack-dev-server --port 9000 --progress --profile --colors --watch --content-base ./src --mode development --env.TARGET=app",
 		"build": "webpack --mode production --env.TARGET=app",
 		"watch": "npm run build -- -w",
 		"stats": "npm run build && source-map-explorer dist/main.bundle.js",
