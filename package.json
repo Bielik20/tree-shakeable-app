@@ -18,7 +18,7 @@
 	"license": "ISC",
 	"dependencies": {
 		"@babel/runtime-corejs2": "^7.4.4",
-		"@wikia/dependency-injection": "^2.0.0",
+		"@wikia/dependency-injection": "^2.0.1",
 		"tree-shakeable-lib": "git+https://github.com/Bielik20/tree-shakeable-lib.git#ioc"
 	},
 	"devDependencies": {
@@ -45,7 +45,7 @@
 		"prettier": "^1.17.0",
 		"sinon": "^7.3.2",
 		"source-map-explorer": "^1.8.0",
-		"source-map-loader": "0.2.3",
+		"source-map-loader": "^0.2.4",
 		"tslint": "^5.16.0",
 		"tslint-config-airbnb": "^5.11.1",
 		"tslint-config-prettier": "^1.18.0",
