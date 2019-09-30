@@ -1,12 +1,13 @@
-import { container, LibDependencyClass } from 'tree-shakeable-lib';
+import { LibConsumerClass, LibDependencyClass } from 'tree-shakeable-lib';
+import { container } from '../ioc-init';
 
 export class BaseConsumerClass {
 	constructor(public ownDep: LibDependencyClass) {}
 }
 
-export class AppConsumerClass extends BaseConsumerClass {
+export class AppConsumerClass extends BaseConsumerClass implements LibConsumerClass {
 	private date = container.get(Date);
-	private dependency = container.get(LibDependencyClass);
+	dependency = container.get(LibDependencyClass);
 
 	constructor() {
 		super(container.get(LibDependencyClass));

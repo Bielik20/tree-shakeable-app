@@ -5,7 +5,7 @@ import { testScope } from './tests/scope';
 import { testTreeShaking } from './tests/tree-shaking';
 
 // testDefault();
-testBindTo();
+// testBindTo();
 // testManualConstructor();
-// testScope();
+testScope();
 // testTreeShaking();

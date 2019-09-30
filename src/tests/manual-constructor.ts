@@ -1,4 +1,5 @@
-import { container, LibConsumerClass } from 'tree-shakeable-lib';
+import { LibConsumerClass } from 'tree-shakeable-lib';
+import { container } from '../ioc-init';
 
 export function testManualConstructor(): void {
 	console.log('### MANUAL CONSTRUCTOR - should not inject when provided value');
