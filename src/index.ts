@@ -1,4 +1,8 @@
+import { printHello } from '@wikia/post-quecast';
+
 document.addEventListener('DOMContentLoaded', () => {
+	printHello();
+
 	window.addEventListener(
 		'message',
 		(event) => {
