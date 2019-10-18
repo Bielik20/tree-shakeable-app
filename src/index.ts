@@ -1,22 +1,14 @@
-import { printHello } from '@wikia/post-quecast';
+import { Communicator, Coordinator } from '@wikia/post-quecast';
 
 document.addEventListener('DOMContentLoaded', () => {
-	printHello();
-
-	window.addEventListener(
-		'message',
-		(event) => {
-			console.log(event);
-			if (event.data === 'iframe message') {
-				event.source.postMessage('father message to iframe', '*' as any);
-			}
-		},
-		false,
-	);
-
+	// tslint:disable-next-line:no-unused-expression
+	new Coordinator();
+	const communicator = new Communicator('ae', 'tree shakeable app');
 	const button = document.getElementById('post-message');
 
+	communicator.actions.subscribe((action) => console.log('tree shakeable app', action));
+
 	button.addEventListener('click', () => {
-		window.postMessage('father message', '*');
+		communicator.emit({ type: 'father message' });
 	});
 });
