@@ -24,4 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		const iframe = document.getElementById('iframe-2');
 		iframe.parentNode.removeChild(iframe);
 	});
+
+	document.getElementById('create-communicator').addEventListener('click', () => {
+		const communicator2 = new Communicator('ae', 'tree shakeable app - 2');
+		communicator2.actions$.subscribe((action) => console.log('tree shakeable app - 2', action));
+	});
 });
