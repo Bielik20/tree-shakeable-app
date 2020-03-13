@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	communicator.actions$.subscribe((action) => console.log('tree shakeable app', action));
 
 	document.getElementById('post-message').addEventListener('click', () => {
-		communicator.emit({ type: 'father message' });
+		communicator.dispatch({ type: 'father message' });
 	});
 
 	document.getElementById('listen-actions').addEventListener('click', () => {
